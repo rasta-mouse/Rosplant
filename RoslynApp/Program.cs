@@ -33,7 +33,11 @@ namespace RoslynApp
                 try
                 {
                     var scriptState = await CSharpScript.RunAsync(code);
-                    await WriteToStream(stream, $"{scriptState?.ReturnValue}");
+                    
+                    if (scriptState.ReturnValue is null)
+                        await WriteToStream(stream, "Done");
+                    else
+                        await WriteToStream(stream, $"{scriptState.ReturnValue}");
                 }
                 catch (Exception e)
                 {
@@ -48,7 +52,7 @@ namespace RoslynApp
         {
             await using var ms = new MemoryStream();
             var read = 0;
-            
+
             do
             {
                 var buf = new byte[1024];
