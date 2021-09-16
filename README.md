@@ -27,7 +27,7 @@ PS C:\> .\RoslynApp.exe
 The server will note the connection.
 
 ```
-PS C:\Users\Daniel\source\repos\Rosplant\RoslynServer> dotnet run
+PS C:\Rosplant\RoslynServer> dotnet run
 Waiting for client... connected!
 >
 ```
